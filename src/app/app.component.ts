@@ -8,3 +8,5 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'AngularItems';
 }
+
+export const baseUrl = 'http://localhost:56831';

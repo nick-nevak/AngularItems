@@ -19,13 +19,13 @@ export class ItemsFacade {
   getProducts$(): Observable<Product[]> {
     // here we just pass the state without any projections
     // it may happen that it is necessary to combine two or more streams and expose to the components
-    return this.itemsState.getCashflowCategories$();
+    return this.itemsState.getProducts$();
   }
 
   loadProducts() {
-    return this.ProductApi.getCashflowCategories()
+    return this.ProductApi.getProducts()
       .pipe(
-        tap(categories => this.itemsState.setCashflowCategories(categories))
+        tap(p => this.itemsState.setProducts(p))
       );
   }
 

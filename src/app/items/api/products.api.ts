@@ -2,16 +2,17 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Product } from '../models/product';
 import { Observable } from 'rxjs';
+import { baseUrl } from 'src/app/app.component';
 
 
 @Injectable()
 export class ProductsApi {
 
-  readonly API = '/api/cashflowCategories';
+  readonly API = `${baseUrl}/api/items`;
 
   constructor(private http: HttpClient) {}
 
-  getCashflowCategories(): Observable<Product[]> {
+  getProducts(): Observable<Product[]> {
     return this.http.get<Product[]>(this.API);
   }
 

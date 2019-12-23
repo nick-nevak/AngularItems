@@ -10,7 +10,7 @@ import { ItemsFacade } from '../../items-facade';
 })
 export class ProductListComponent implements OnInit {
 
-  @Input() cashflowCategories$: Product[];
+  @Input() products$: Product[];
   newProduct: Product = { id: 0, name: '' };
   isUpdating$: Observable<boolean>;
 

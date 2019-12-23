@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ItemsFacade } from '../../items-facade';
+import { Observable } from 'rxjs';
+import { Product } from '../../models/product';
 
 @Component({
   selector: 'app-item',
@@ -7,9 +10,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ItemComponent implements OnInit {
 
-  constructor() { }
+  products$: Observable<Product[]>;
+
+  constructor(private itemsFacade: ItemsFacade) { }
 
   ngOnInit() {
+    this.itemsFacade.loadProducts().subscribe();
+    this.products$ = this.itemsFacade.getProducts$();
   }
 
 }

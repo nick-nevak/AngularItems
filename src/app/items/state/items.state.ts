@@ -16,11 +16,12 @@ export class ItemsState {
     this.updating$.next(isUpdating);
   }
 
-  getCashflowCategories$() {
+  getProducts$() {
     return this.products$.asObservable();
   }
 
-  setCashflowCategories(products: Product[]) {
+  setProducts(products: Product[]) {
+    debugger;
     this.products$.next(products);
   }
 

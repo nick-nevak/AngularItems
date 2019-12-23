@@ -7,6 +7,7 @@ import { ItemComponent } from './containers/item/item.component';
 import { ProductsApi } from './api/products.api';
 import { ItemsFacade } from './items-facade';
 import { ItemsState } from './state/items.state';
+import { HttpClientModule } from '@angular/common/http';
 
 
 
@@ -18,7 +19,8 @@ import { ItemsState } from './state/items.state';
   ],
   imports: [
     CommonModule,
-    ItemsRoutingModule
+    ItemsRoutingModule,
+    HttpClientModule
   ],
   providers: [
     ProductsApi,
