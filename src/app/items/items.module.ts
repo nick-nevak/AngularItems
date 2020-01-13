@@ -1,21 +1,22 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http';
+import { ItemComponent } from './components/item/item.component';
+import { ItemsListComponent } from './containers/items-list/items-list.component';
 import { ItemsRoutingModule } from './items-routing.module';
-import { ProductComponent } from './components/product/product.component';
-import { ProductListComponent } from './containers/product-list/product-list.component';
-import { ItemComponent } from './containers/item/item.component';
-import { ProductsApi } from './api/products.api';
 import { ItemsFacade } from './items-facade';
 import { ItemsState } from './state/items.state';
-import { HttpClientModule } from '@angular/common/http';
+import { ItemsBoardComponent } from './containers/items-board/items-board.component';
+import { ItemsApi } from './api/items.api';
+
 
 
 
 @NgModule({
   declarations: [
     ItemComponent,
-    ProductComponent,
-    ProductListComponent
+    ItemsListComponent,
+    ItemsBoardComponent
   ],
   imports: [
     CommonModule,
@@ -23,7 +24,7 @@ import { HttpClientModule } from '@angular/common/http';
     HttpClientModule
   ],
   providers: [
-    ProductsApi,
+    ItemsApi,
     ItemsFacade,
     ItemsState
   ]

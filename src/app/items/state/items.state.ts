@@ -1,51 +1,50 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
-import { Product } from '../models/product';
+import { BehaviorSubject, Observable } from 'rxjs';
+import { Item } from '../models/item';
 
 @Injectable()
 export class ItemsState {
 
   private updating$ = new BehaviorSubject<boolean>(false);
-  private products$ = new BehaviorSubject<Product[]>(null);
+  private items$ = new BehaviorSubject<Item[]>(null);
 
-  isUpdating$() {
+  isUpdating$(): Observable<boolean> {
     return this.updating$.asObservable();
   }
 
-  setUpdating(isUpdating: boolean) {
+  setUpdating(isUpdating: boolean): void {
     this.updating$.next(isUpdating);
   }
 
-  getProducts$() {
-    return this.products$.asObservable();
+  getItems$(): Observable<Item[]> {
+    return this.items$.asObservable();
   }
 
-  setProducts(products: Product[]) {
-    debugger;
-    this.products$.next(products);
+  setItems(items: Item[]): void {
+    this.items$.next(items);
   }
 
-  addProduct(product: Product) {
-    const currentValue = this.products$.getValue();
-    this.products$.next([...currentValue, product]);
+  addItem(item: Item): void {
+    const currentValue = this.items$.getValue();
+    this.items$.next([...currentValue, item]);
   }
 
-  updateProduct(updatedProduct: Product) {
-    const products = this.products$.getValue();
-    const indexOfUpdated = products.findIndex(p => p.id === updatedProduct.id);
-    products[indexOfUpdated] = updatedProduct;
-    this.products$.next([...products]);
+  updateItem(updatedItem: Item): void {
+    const items = this.items$.getValue();
+    const indexOfUpdated = items.findIndex(p => p.id === updatedItem.id);
+    items[indexOfUpdated] = updatedItem;
+    this.items$.next([...items]);
   }
 
-  updateProductId(productToReplace: Product, addedProductWithId: Product) {
-    const products = this.products$.getValue();
-    const updatedCategoryIndex = products.findIndex(p => p === productToReplace);
-    products[updatedCategoryIndex] = addedProductWithId;
-    this.products$.next([...products]);
+  updateItemId(itemToReplace: Item, addedItemWithId: Item): void {
+    const items = this.items$.getValue();
+    const updatedIndex = items.findIndex(p => p === itemToReplace);
+    items[updatedIndex] = addedItemWithId;
+    this.items$.next([...items]);
   }
 
-  removeProduct(productToRemove: Product) {
-    const currentValue = this.products$.getValue();
-    this.products$.next(currentValue.filter(p => p !== productToRemove));
+  removeItem(itemToRemove: Item): void {
+    const currentValue = this.items$.getValue();
+    this.items$.next(currentValue.filter(p => p !== itemToRemove));
   }
 }
