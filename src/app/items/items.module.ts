@@ -8,6 +8,8 @@ import { ItemsFacade } from './items-facade';
 import { ItemsState } from './state/items.state';
 import { ItemsBoardComponent } from './containers/items-board/items-board.component';
 import { ItemsApi } from './api/items.api';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MaterialModule } from '../material/material.module';
 
 
 
@@ -20,8 +22,10 @@ import { ItemsApi } from './api/items.api';
   ],
   imports: [
     CommonModule,
+    MaterialModule,
     ItemsRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [
     ItemsApi,

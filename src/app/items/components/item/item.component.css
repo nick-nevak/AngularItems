@@ -2,3 +2,7 @@
     border: 2px solid red;
     margin-bottom: 5px; 
 }
+
+mat-form-field {
+    display: block;
+}

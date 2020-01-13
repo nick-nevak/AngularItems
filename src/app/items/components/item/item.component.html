@@ -1,11 +1,17 @@
-<div class="content">
-    <div>
-        Id: {{item.id}}
+<mat-card [formGroup]="itemForm" class="col-4 m-3">
+
+    <mat-form-field>
+        <mat-label>Name</mat-label>
+        <input matInput formControlName="name">
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-label>Description</mat-label>
+        <input matInput formControlName="description">
+    </mat-form-field>
+
+    <div class="d-flex justify-content-end">
+        <button mat-button (click)="submit()">Save</button>
+        <button mat-button (click)="submit()">Cancel</button>
     </div>
-    <div>
-        Name: {{item.name}}
-    </div>
-    <div>
-        Description: {{item.description}}
-    </div>
-</div>
+</mat-card>
