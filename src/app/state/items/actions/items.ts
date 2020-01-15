@@ -2,101 +2,101 @@ import { Action } from '@ngrx/store';
 import { Item } from 'src/app/items/models/item';
 import { createActionType } from '../../shared/utils';
 
-export const ADD_POWER = createActionType('ADD_POWER');
-export const ADD_POWER_SUCCESS = createActionType('ADD_POWER_SUCCESS');
-export const DELETE_POWER = createActionType('DELETE_POWER');
-export const DELETE_POWER_SUCCESS = createActionType('DELETE_POWER_SUCCESS');
-export const LOAD_POWERS = createActionType('LOAD_POWERS');
-export const LOAD_POWERS_SUCCESS = createActionType('LOAD_POWERS_SUCCESS');
-export const LOAD_POWER = createActionType('LOAD_POWER');
-export const LOAD_POWER_SUCCESS = createActionType('LOAD_POWER_SUCCESS')
-export const SELECT_POWER = createActionType('SELECT_POWER');
-export const UPDATE_POWER = createActionType('UPDATE_POWER');
-export const UPDATE_POWER_SUCCESS = createActionType('UPDATE_POWER_SUCCESS');
+export const ADD_ITEM = createActionType('ADD_ITEM');
+export const ADD_ITEM_SUCCESS = createActionType('ADD_ITEM_SUCCESS');
+export const DELETE_ITEM = createActionType('DELETE_ITEM');
+export const DELETE_ITEM_SUCCESS = createActionType('DELETE_ITEM_SUCCESS');
+export const LOAD_ITEMS = createActionType('LOAD_ITEMS');
+export const LOAD_ITEMS_SUCCESS = createActionType('LOAD_ITEMS_SUCCESS');
+export const LOAD_ITEM = createActionType('LOAD_ITEM');
+export const LOAD_ITEM_SUCCESS = createActionType('LOAD_ITEM_SUCCESS');
+export const SELECT_ITEM = createActionType('SELECT_ITEM');
+export const UPDATE_ITEM = createActionType('UPDATE_ITEM');
+export const UPDATE_ITEM_SUCCESS = createActionType('UPDATE_ITEM_SUCCESS');
 
-export class AddPower implements Action {
-  readonly type = ADD_POWER;
-
-  constructor(public payload: Item) {
-  }
-}
-
-export class AddPowerSuccess implements Action {
-  readonly type = ADD_POWER_SUCCESS;
+export class AddItem implements Action {
+  readonly type = ADD_ITEM;
 
   constructor(public payload: Item) {
   }
 }
 
-export class DeletePower implements Action {
-  readonly type = DELETE_POWER;
+export class AddItemSuccess implements Action {
+  readonly type = ADD_ITEM_SUCCESS;
 
   constructor(public payload: Item) {
   }
 }
 
-export class DeletePowerSuccess implements Action {
-  readonly type = DELETE_POWER_SUCCESS;
+export class DeleteItem implements Action {
+  readonly type = DELETE_ITEM;
 
   constructor(public payload: Item) {
   }
 }
 
-export class LoadPowers implements Action {
-  readonly type = LOAD_POWERS;
+export class DeleteItemSuccess implements Action {
+  readonly type = DELETE_ITEM_SUCCESS;
+
+  constructor(public payload: Item) {
+  }
 }
 
-export class LoadPowersSuccess implements Action {
-  readonly type = LOAD_POWERS_SUCCESS;
+export class LoadItems implements Action {
+  readonly type = LOAD_ITEMS;
+}
+
+export class LoadItemsSuccess implements Action {
+  readonly type = LOAD_ITEMS_SUCCESS;
 
   constructor(public payload: Item[]) {
   }
 }
 
-export class LoadPower implements Action {
-  readonly type = LOAD_POWER;
+export class LoadItem implements Action {
+  readonly type = LOAD_ITEM;
 
   constructor(public payload: { id: number }) {
   }
 }
 
-export class LoadPowerSuccess implements Action {
-  readonly type = LOAD_POWER_SUCCESS;
+export class LoadItemSuccess implements Action {
+  readonly type = LOAD_ITEM_SUCCESS;
 
   constructor(public payload: Item) {
   }
 }
 
-export class SelectPower implements Action {
-  readonly type = SELECT_POWER;
+export class SelectItem implements Action {
+  readonly type = SELECT_ITEM;
 
   constructor(public payload: { id: number }) {
   }
 }
 
-export class UpdatePower implements Action {
-  readonly type = UPDATE_POWER;
+export class UpdateItem implements Action {
+  readonly type = UPDATE_ITEM;
 
   constructor(public payload: Item) {
   }
 }
 
-export class UpdatePowerSuccess implements Action {
-  readonly type = UPDATE_POWER_SUCCESS;
+export class UpdateItemSuccess implements Action {
+  readonly type = UPDATE_ITEM_SUCCESS;
 
   constructor(public payload: Item) {
   }
 }
 
-export type PowersAction =
-  AddPower
-  | AddPowerSuccess
-  | DeletePower
-  | DeletePowerSuccess
-  | LoadPowers
-  | LoadPowersSuccess
-  | LoadPower
-  | LoadPowerSuccess
-  | SelectPower
-  | UpdatePower
-  | UpdatePowerSuccess;
+export type ItemsAction =
+  AddItem
+  | AddItemSuccess
+  | DeleteItem
+  | DeleteItemSuccess
+  | LoadItems
+  | LoadItemsSuccess
+  | LoadItem
+  | LoadItemSuccess
+  | SelectItem
+  | UpdateItem
+  | UpdateItemSuccess;

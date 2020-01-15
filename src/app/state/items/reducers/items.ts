@@ -1,33 +1,33 @@
 import { createEntityAdapter, EntityAdapter, EntityState } from '@ngrx/entity';
 import {
-  ADD_POWER_SUCCESS, DELETE_POWER_SUCCESS, LOAD_POWER_SUCCESS, LOAD_POWERS_SUCCESS, PowersAction, SELECT_POWER,
-  UPDATE_POWER_SUCCESS
+  ADD_ITEM_SUCCESS, DELETE_ITEM_SUCCESS, LOAD_ITEM_SUCCESS, LOAD_ITEMS_SUCCESS, ItemsAction, SELECT_ITEM,
+  UPDATE_ITEM_SUCCESS
 } from '../actions/items';
 import { Item } from 'src/app/items/models/item';
 
 export interface State extends EntityState<Item> {
-  selectedPowerId: number;
+  selectedItemId: number;
 }
 
 export const adapter: EntityAdapter<Item> = createEntityAdapter();
 
 const initialState: State = adapter.getInitialState({
-  selectedPowerId: null
+  selectedItemId: null
 });
 
-export function reducer(state: State = initialState, action: PowersAction) {
+export function reducer(state: State = initialState, action: ItemsAction) {
   switch (action.type) {
-    case ADD_POWER_SUCCESS:
+    case ADD_ITEM_SUCCESS:
       return adapter.addOne(action.payload, state);
-    case DELETE_POWER_SUCCESS:
+    case DELETE_ITEM_SUCCESS:
       return adapter.removeOne(action.payload.id, state);
-    case LOAD_POWER_SUCCESS:
+    case LOAD_ITEM_SUCCESS:
       return adapter.addOne(action.payload, state);
-    case LOAD_POWERS_SUCCESS:
+    case LOAD_ITEMS_SUCCESS:
       return adapter.addMany(action.payload, state);
-    case SELECT_POWER:
-      return { ...state, selectedPowerId: action.payload.id };
-    case UPDATE_POWER_SUCCESS:
+    case SELECT_ITEM:
+      return { ...state, selectedItemId: action.payload.id };
+    case UPDATE_ITEM_SUCCESS:
       return adapter.updateOne({
         id: action.payload.id,
         changes: action.payload
@@ -37,4 +37,4 @@ export function reducer(state: State = initialState, action: PowersAction) {
   }
 }
 
-export const getSelectedPowerId = (state: State) => state.selectedPowerId;
+export const getSelectedItemId = (state: State) => state.selectedItemId;

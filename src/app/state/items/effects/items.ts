@@ -3,8 +3,8 @@ import { Actions, Effect } from '@ngrx/effects';
 import { Action } from '@ngrx/store';
 import { map, switchMap } from 'rxjs/operators';
 import {
-    ADD_POWER, AddPower, AddPowerSuccess, DELETE_POWER, DeletePower, DeletePowerSuccess, LOAD_POWER, LOAD_POWERS,
-    LoadPower, LoadPowers, LoadPowersSuccess, LoadPowerSuccess, UPDATE_POWER, UpdatePower, UpdatePowerSuccess
+    ADD_ITEM, AddItem, AddItemSuccess, DELETE_ITEM, DeleteItem, DeleteItemSuccess, LOAD_ITEM, LOAD_ITEMS,
+    LoadItem, LoadItems, LoadItemsSuccess, LoadItemSuccess, UPDATE_ITEM, UpdateItem, UpdateItemSuccess
 } from '../actions/items';
 import { Observable } from 'rxjs';
 import { ItemsApi } from 'src/app/items/api/items.api';
@@ -12,59 +12,59 @@ import { ofType } from '@ngrx/effects';
 
 
 @Injectable()
-export class PowersEffects {
+export class ItemsEffects {
 
     @Effect()
-    addPowerTEST: Observable<Action> = this.actions
+    addItemTEST: Observable<Action> = this.actions
         .pipe(
-            ofType<AddPower>(ADD_POWER),
+            ofType<AddItem>(ADD_ITEM),
             map(action => action.payload),
-            switchMap(power => this.itemsApi.createItem(power)),
-            map(power => new AddPowerSuccess(power))
+            switchMap(item => this.itemsApi.createItem(item)),
+            map(item => new AddItemSuccess(item))
         );
 
     @Effect()
-    addPower: Observable<Action> = this.actions
+    addItem: Observable<Action> = this.actions
         .pipe(
-            ofType<AddPower>(ADD_POWER),
+            ofType<AddItem>(ADD_ITEM),
             map(action => action.payload),
-            switchMap(power => this.itemsApi.createItem(power)),
-            map(power => new AddPowerSuccess(power))
+            switchMap(item => this.itemsApi.createItem(item)),
+            map(item => new AddItemSuccess(item))
         );
 
     @Effect()
-    deletePower: Observable<Action> = this.actions
+    deleteItem: Observable<Action> = this.actions
         .pipe(
-            ofType<DeletePower>(DELETE_POWER),
+            ofType<DeleteItem>(DELETE_ITEM),
             map(action => action.payload),
-            switchMap(power => this.itemsApi.deleteItem(power)),
-            map(power => new DeletePowerSuccess(power))
+            switchMap(item => this.itemsApi.deleteItem(item)),
+            map(item => new DeleteItemSuccess(item))
         );
 
     @Effect()
-    loadPowers: Observable<Action> = this.actions
+    loadItems: Observable<Action> = this.actions
         .pipe(
-            ofType<LoadPowers>(LOAD_POWERS),
+            ofType<LoadItems>(LOAD_ITEMS),
             switchMap(() => this.itemsApi.getItems()),
-            map(powers => new LoadPowersSuccess(powers))
+            map(items => new LoadItemsSuccess(items))
         );
 
     // @Effect()
-    // loadPower: Observable<Action> = this.actions
+    // loadItem: Observable<Action> = this.actions
     //     .pipe(
-    //         ofType<LoadPower>(LOAD_POWER),
+    //         ofType<LoadItem>(LOAD_ITEM),
     //         map(action => action.payload),
-    //         switchMap(payload => this.itemsApi.getPower(payload.id)),
-    //         map(power => new LoadPowerSuccess(power))
+    //         switchMap(payload => this.itemsApi.getItem(payload.id)),
+    //         map(item => new LoadItemSuccess(item))
     //     );
 
     @Effect()
-    updatePower: Observable<Action> = this.actions
+    updateItem: Observable<Action> = this.actions
         .pipe(
-            ofType<UpdatePower>(UPDATE_POWER),
+            ofType<UpdateItem>(UPDATE_ITEM),
             map(action => action.payload),
-            switchMap(power => this.itemsApi.updateItem(power)),
-            map(power => new UpdatePowerSuccess(power))
+            switchMap(item => this.itemsApi.updateItem(item)),
+            map(item => new UpdateItemSuccess(item))
         );
 
     constructor(private actions: Actions,

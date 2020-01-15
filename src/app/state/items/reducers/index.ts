@@ -2,39 +2,39 @@ import { createFeatureSelector, createSelector } from '@ngrx/store';
 import { AppState } from '../../app.interface';
 import * as fromItems from './items';
 
-export interface PowersState {
-  powers: fromItems.State;
+export interface ItemsState {
+  items: fromItems.State;
 }
 
 export interface State extends AppState {
-  powers: PowersState;
+  items: ItemsState;
 }
 
 export const reducers = {
-  powers: fromItems.reducer
+  items: fromItems.reducer
 };
 
-export const getPowersState = createFeatureSelector<PowersState>('powers');
+export const getItemsState = createFeatureSelector<ItemsState>('items');
 
-export const getPowersEntityState = createSelector(
-  getPowersState,
-  (state) => state.powers
+export const getItemsEntityState = createSelector(
+  getItemsState,
+  (state) => state.items
 );
 
 export const {
-  selectAll: getAllPowers,
-  selectEntities: getPowerEntities,
-  selectIds: getPowerIds,
-  selectTotal: getPowersTotal
-} = fromItems.adapter.getSelectors(getPowersEntityState);
+  selectAll: getAllItems,
+  selectEntities: getItemEntities,
+  selectIds: getItemIds,
+  selectTotal: getItemsTotal
+} = fromItems.adapter.getSelectors(getItemsEntityState);
 
-export const getSelectedPowerId = createSelector(
-  getPowersEntityState,
-  fromItems.getSelectedPowerId
+export const getSelectedItemId = createSelector(
+  getItemsEntityState,
+  fromItems.getSelectedItemId
 );
 
-export const getSelectedPower = createSelector(
-  getPowerEntities,
-  getSelectedPowerId,
-  (entities, selectedPowerId) => selectedPowerId && entities[selectedPowerId]
+export const getSelectedItem = createSelector(
+  getItemEntities,
+  getSelectedItemId,
+  (entities, selectedItemId) => selectedItemId && entities[selectedItemId]
 );
