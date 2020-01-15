@@ -8,8 +8,7 @@ import { environment } from 'src/environments/environment';
 import { AppEffects } from './app.effects';
 import { appReducer, appMetaReducers } from './app.reducer';
 import { CustomSerializer } from './shared/utils';
-
-
+import * as fromItems from './items/reducers';
 
 @NgModule({
   imports: [
@@ -17,6 +16,7 @@ import { CustomSerializer } from './shared/utils';
     StoreModule.forRoot(appReducer, {
       metaReducers: appMetaReducers
     }),
+    StoreModule.forFeature('items', fromItems.reducers),
     StoreRouterConnectingModule.forRoot(),
     EffectsModule.forRoot([
       AppEffects
