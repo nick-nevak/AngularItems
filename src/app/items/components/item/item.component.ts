@@ -11,6 +11,8 @@ export class ItemComponent implements OnChanges {
 
   @Input() item: Item;
   @Output() itemUpdated = new EventEmitter<Item>();
+  @Output() itemDeleted = new EventEmitter<Item>();
+  @Output() changesCanceled = new EventEmitter<Item>();
 
   itemForm: FormGroup;
 
@@ -26,8 +28,18 @@ export class ItemComponent implements OnChanges {
   submit(): void {
     if (this.itemForm.valid) {
       const updatedItem = this.itemForm.value as Item;
+      updatedItem.id = this.item.id;
       this.itemUpdated.emit(updatedItem);
     }
+  }
+
+  delete(): void {
+    this.itemDeleted.emit(this.item);
+  }
+
+  cancel(): void {
+    this.updateForm(this.item);
+    this.changesCanceled.emit(this.item);
   }
 
   private createForm(): void {

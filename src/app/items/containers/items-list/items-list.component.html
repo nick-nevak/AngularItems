@@ -1,3 +1,17 @@
+<button mat-button (click)="createItem()">Create</button>
+<div >
+    <app-item *ngIf="newItem"
+        [item]="newItem" 
+        (itemUpdated)="addItem($event)"
+        (itemDeleted)="deleteItem($event)"
+        (changesCanceled)="cancelCreation()">
+    </app-item>
+</div>
+
 <div *ngFor="let item of items$ | async">
-    <app-item [item]="item" (itemUpdated)="updateItem($event)"></app-item>
+    <app-item 
+        [item]="item" 
+        (itemUpdated)="updateItem($event)"
+        (itemDeleted)="deleteItem($event)">
+    </app-item>
 </div>

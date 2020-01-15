@@ -11,7 +11,7 @@ import { Item } from '../../models/item';
 export class ItemsListComponent implements OnInit {
 
   items$: Observable<Item[]>;
-  newItem: Item = { id: 0, name: '', description: '' };
+  newItem: Item;
   isUpdating$: Observable<boolean>;
 
   constructor(private itemsFacade: ItemsFacade) {
@@ -23,11 +23,25 @@ export class ItemsListComponent implements OnInit {
     this.items$ = this.itemsFacade.getItems$();
   }
 
+  createItem() {
+    this.newItem = { id: 0, name: '', description: '' };
+  }
+
   addItem(item: Item) {
     this.itemsFacade.addItem(item);
+    this.cancelCreation();
+  }
+
+  cancelCreation() {
+    this.newItem = undefined;
   }
 
   updateItem(item: Item) {
     this.itemsFacade.updateItem(item);
   }
+
+  deleteItem(item: Item) {
+    this.itemsFacade.deleteItem(item);
+  }
+
 }

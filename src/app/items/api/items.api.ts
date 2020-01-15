@@ -24,4 +24,8 @@ export class ItemsApi {
     return this.http.put(`${this.API}/${item.id}`, item);
   }
 
+  deleteItem(item: Item): Observable<any> {
+    return this.http.delete(`${this.API}/${item.id}`);
+  }
+
 }
