@@ -15,15 +15,6 @@ import { ofType } from '@ngrx/effects';
 export class ItemsEffects {
 
     @Effect()
-    addItemTEST: Observable<Action> = this.actions
-        .pipe(
-            ofType<AddItem>(ADD_ITEM),
-            map(action => action.payload),
-            switchMap(item => this.itemsApi.createItem(item)),
-            map(item => new AddItemSuccess(item))
-        );
-
-    @Effect()
     addItem: Observable<Action> = this.actions
         .pipe(
             ofType<AddItem>(ADD_ITEM),

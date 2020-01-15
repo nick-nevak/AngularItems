@@ -1,12 +1,12 @@
 import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
-import { ItemsState } from './state/items.state';
+import { ItemsState } from '../state/items.state';
 import { tap } from 'rxjs/operators';
-import { Item } from './models/item';
-import { ItemsApi } from './api/items.api';
+import { Item } from '../models/item';
+import { ItemsApi } from '../api/items.api';
 
 @Injectable()
-export class ItemsFacade {
+export class ItemsFacadeNoRx {
 
   constructor(
     private itemsApi: ItemsApi,

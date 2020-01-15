@@ -4,12 +4,13 @@ import { HttpClientModule } from '@angular/common/http';
 import { ItemComponent } from './components/item/item.component';
 import { ItemsListComponent } from './containers/items-list/items-list.component';
 import { ItemsRoutingModule } from './items-routing.module';
-import { ItemsFacade } from './items-facade';
 import { ItemsState } from './state/items.state';
 import { ItemsBoardComponent } from './containers/items-board/items-board.component';
 import { ItemsApi } from './api/items.api';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from '../material/material.module';
+import { ItemsFacade } from './facades/items-facade';
+import { ItemsFacadeNoRx } from './facades/items-facade-no-rx';
 
 
 
@@ -30,6 +31,7 @@ import { MaterialModule } from '../material/material.module';
   providers: [
     ItemsApi,
     ItemsFacade,
+    ItemsFacadeNoRx,
     ItemsState
   ]
 })

@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Observable } from 'rxjs';
-import { ItemsFacade } from '../../items-facade';
 import { Item } from '../../models/item';
+import { ItemsFacade } from '../../facades/items-facade';
 
 @Component({
   selector: 'app-items-list',
@@ -15,11 +15,11 @@ export class ItemsListComponent implements OnInit {
   isUpdating$: Observable<boolean>;
 
   constructor(private itemsFacade: ItemsFacade) {
-    this.isUpdating$ = itemsFacade.isUpdating$();
+    //this.isUpdating$ = itemsFacade.isUpdating$();
   }
 
   ngOnInit() {
-    this.itemsFacade.loadItems().subscribe();
+    this.itemsFacade.loadItems();
     this.items$ = this.itemsFacade.getItems$();
   }
 
