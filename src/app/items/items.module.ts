@@ -9,7 +9,6 @@ import { ItemsBoardComponent } from './containers/items-board/items-board.compon
 import { ItemsApi } from './api/items.api';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from '../material/material.module';
-import { ItemsFacade } from './facades/items-facade';
 import { ItemsFacadeNoRx } from './facades/items-facade-no-rx';
 
 
@@ -30,7 +29,6 @@ import { ItemsFacadeNoRx } from './facades/items-facade-no-rx';
   ],
   providers: [
     ItemsApi,
-    ItemsFacade,
     ItemsFacadeNoRx,
     ItemsState
   ]
